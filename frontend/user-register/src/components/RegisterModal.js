@@ -1,13 +1,27 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 import "./RegisterModal.css";
 const RegisterModal = ({ trigger }) => {
   return (
     <Formik
       initialValues={{ email: "", username: "", password: "" }}
       onSubmit={(values, { setSubmitting }) => {
-        console.log(values);
+        axios
+          .post(`http://localhost:8080/user`, {
+            email: values.email,
+            username: values.username,
+            password: values.password
+          })
+          .then(d => {
+            trigger();
+          })
+          .catch(error => {
+            console.log(error);
+            window.alert(error.response.data);
+          });
+
         setTimeout(() => {
           setSubmitting(false);
         }, 500);

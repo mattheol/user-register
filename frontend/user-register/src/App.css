@@ -7,3 +7,21 @@
   background-color: #ffee33;
   cursor: pointer;
 }
+
+.userTable {
+  margin: auto;
+  max-width: 500px;
+}
+
+.container {
+}
+
+.usersHeader {
+  margin: auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.titleHeader {
+  margin: 0;
+}
