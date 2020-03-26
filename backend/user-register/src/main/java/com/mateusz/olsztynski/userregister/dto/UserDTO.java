@@ -13,6 +13,7 @@ public class UserDTO {
         this.username = user.getUsername();
     }
 
+
     public Integer getId() {
         return id;
     }

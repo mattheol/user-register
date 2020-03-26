@@ -8,34 +8,34 @@ const RegisterModal = ({ trigger }) => {
     <Formik
       initialValues={{ email: "", username: "", password: "" }}
       onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(true);
         axios
-          .post(`http://localhost:8080/user`, {
+          .post(`https://heroku-user-register.herokuapp.com/user`, {
             email: values.email,
             username: values.username,
             password: values.password
           })
           .then(d => {
-            trigger();
+            trigger({ shouldRefresh: true });
           })
           .catch(error => {
-            console.log(error);
             window.alert(error.response.data);
+            setSubmitting(false);
           });
-
-        setTimeout(() => {
-          setSubmitting(false);
-        }, 500);
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
           .email("Invalid email")
-          .required("Required"),
+          .required("Required")
+          .max(255, "Too long"),
         username: Yup.string()
           .required("Required")
-          .min(3, "Min. 3 characters"),
+          .min(3, "Min. 3 characters")
+          .max(255, "Too long"),
         password: Yup.string()
           .required("Required")
           .min(8, "Min. 8 characters")
+          .max(255, "Too long")
       })}
     >
       {props => {

@@ -1,0 +1,27 @@
+.userTable {
+  margin: auto;
+  max-width: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.usersHeader {
+  background-color: #39cccc;
+  margin: auto;
+  max-width: 500px;
+  text-align: center;
+  padding: 15px;
+}
+
+.titleHeader {
+  margin: 0;
+}
+
+.refreshIcon {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  top: 10px;
+  right: 8px;
+  cursor: pointer;
+}

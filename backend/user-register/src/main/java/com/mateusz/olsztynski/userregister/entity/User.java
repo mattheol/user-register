@@ -1,5 +1,7 @@
 package com.mateusz.olsztynski.userregister.entity;
 
+import com.mateusz.olsztynski.userregister.dto.UserDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,6 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String email;
-
     private String username;
     private String password;
 

@@ -5,6 +5,7 @@ import com.mateusz.olsztynski.userregister.entity.User;
 import com.mateusz.olsztynski.userregister.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,10 +15,13 @@ import java.util.List;
 @RestController
 public class UserController {
     private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
+
 
     @GetMapping("/users")
     public List<UserDTO> retrieveUsers(){
@@ -37,7 +41,9 @@ public class UserController {
         if(userRepository.findByEmail(user.getEmail())!=null){
             return new ResponseEntity<>("Email already used",HttpStatus.BAD_REQUEST);
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        UserDTO userDTO = new UserDTO(user);
+        return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
 }

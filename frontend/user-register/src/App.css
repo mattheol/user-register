@@ -6,22 +6,19 @@
   outline: none;
   background-color: #ffee33;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
 }
 
-.userTable {
-  margin: auto;
-  max-width: 500px;
+.registerTriggerBtn:hover {
+  background-color: rgb(243, 228, 63);
 }
 
 .container {
-}
-
-.usersHeader {
-  margin: auto;
-  max-width: 500px;
-  text-align: center;
-}
-
-.titleHeader {
-  margin: 0;
+  height: 100%;
+  padding-bottom: 50px;
 }
