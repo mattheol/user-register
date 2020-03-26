@@ -8,19 +8,15 @@ const App = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://heroku-user-register.herokuapp.com/users`)
-      .then(({ data }) => {
-        setUsers(data);
-      });
+    axios.get(`http://localhost:8080/users`).then(({ data }) => {
+      setUsers(data);
+    });
   }, []);
 
   const refreshUsers = () => {
-    axios
-      .get(`https://heroku-user-register.herokuapp.com/users`)
-      .then(({ data }) => {
-        setUsers(data);
-      });
+    axios.get(`http://localhost:8080/users`).then(({ data }) => {
+      setUsers(data);
+    });
   };
 
   const triggerModal = ({ shouldRefresh }) => {

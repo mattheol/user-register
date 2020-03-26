@@ -10,7 +10,7 @@ const RegisterModal = ({ trigger }) => {
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         axios
-          .post(`https://heroku-user-register.herokuapp.com/user`, {
+          .post(`http://localhost:8080/user`, {
             email: values.email,
             username: values.username,
             password: values.password
