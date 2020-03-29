@@ -6,11 +6,12 @@
 }
 
 .usersHeader {
-  background-color: #39cccc;
+  background-color: #001f3f;
   margin: auto;
   max-width: 500px;
   text-align: center;
   padding: 15px;
+  color: white;
 }
 
 .titleHeader {
@@ -24,4 +25,5 @@
   top: 10px;
   right: 8px;
   cursor: pointer;
+  transition: transform 1s ease-in-out;
 }

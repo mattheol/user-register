@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -7,11 +7,12 @@ import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import "./UserTable.css";
-import reload from "../assets/repeat.svg";
+import reload from "../../assets/repeat.svg";
 
 const UsersTable = ({ users, refreshUsers }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const reloadRef = useRef(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -28,8 +29,9 @@ const UsersTable = ({ users, refreshUsers }) => {
         <h2 className="titleHeader">Registered users</h2>
         <img
           src={reload}
+          ref={reloadRef}
           className="refreshIcon"
-          onClick={refreshUsers}
+          onClick={() => refreshUsers({ reloadRef })}
           alt="Refresh users icon"
         />
       </div>
